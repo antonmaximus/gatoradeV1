@@ -1,0 +1,51 @@
+#gato {
+	height: 480px;
+	width: 200px;
+/*	background-image: url(gatoradeSprite2.jpg);
+	background-position: 0 30px;
+	background-repeat: no-repeat;
+	background-color: ;
+*/
+	background: black url(gatoradeSprite3.jpg) no-repeat 0 63px;
+	margin: 0 auto;
+}
+
+span {
+	display: inline-block;
+    color: white;
+    font-size: small;
+    font-family: helvetica;
+}
+
+#outOf {
+    transform: translate(67%, 140px);
+}
+
+
+#swipeUp {
+    transform: translate(-32%, 264px);
+}
+#tri {
+    transform: scaleX(3) translate(-20px, 246px);
+}
+#gatoLogo {
+	width: 77px;
+	height: 58px;
+	background: url(gatorade.png) no-repeat;
+	background-size: contain;
+	transform: translate(68px, 3px);
+	opacity: 0;
+}
+#gatoHolder {
+	width: 320px;
+	height: 480px;
+	background-color: rgba(0, 0, 0, 1);
+}
+
+
+
+#bgHolder {
+	width: 320px;
+	height: 480px;
+	background: gray url(bottle2.jpg);
+}
