@@ -53,6 +53,7 @@ function touchAndDragToExpand(targetObj) {
 
 var v = 0;
 function tryme(event) {
+	recursive = false;
 	initalBannerContact(event);
 }
 
