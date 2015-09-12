@@ -9,15 +9,11 @@ var initialTouch, previousTouch, origValue, recursive,
 	offsetTop = targetObj.getBoundingClientRect().top;
 
 var isMobile = false;
-if(true){
-// if(typeof window.orientation !== 'undefined'){
+if(typeof window.orientation !== 'undefined'){
 	isMobile = true;
-	console.log('touchAndDragToExpand');
 	touchAndDragToExpand(targetObj); 
 }
 else {
-	console.log('clickAndDrag');
-
 	clickAndDrag(targetObj);
 }
 document.querySelector('#hell').innerHTML = typeof window.orientation;
