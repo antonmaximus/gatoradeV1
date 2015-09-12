@@ -58,9 +58,6 @@ function tryme(event) {
 }
 
 function initalBannerContact(event){ 
-	// initialTouch = RPNS.device.mobile ? event.changedTouches[0][axis] : event[axis];
-	console.log(event.changedTouches[0]);
-	console.log(event.changedTouches[0][axis] );
 	initialTouch = isMobile ? event.changedTouches[0][axis] : event[axis];
 	previousTouch = initialTouch;
 
@@ -74,7 +71,7 @@ function initalBannerContact(event){
 function bannerIsDragged(event){ 
 	// var currentTouch = RPNS.device.mobile ? event.changedTouches[0][axis] : event[axis];
 	var currentTouch = isMobile ? event.changedTouches[0][axis] : event[axis];
-	var displacement = -parseInt((currentTouch - initialTouch) * totalFrames/130); //denominator is scale in pixels
+	var displacement = -parseInt((currentTouch - initialTouch) * totalFrames/160); //denominator is scale in pixels
 
 	var newValue = Math.abs(origValue/imgWidth) + displacement;
 	newValue = newValue >= totalFrames ? totalFrames - 1 : newValue < 0 ? 0 : newValue;
