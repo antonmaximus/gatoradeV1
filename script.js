@@ -1,6 +1,6 @@
 // Variables for `touchAndDrag` and `clickAndDrag`
 var initialTouch, previousTouch, origValue, recursive,
-	axis = 'y',
+	axis = 'pageY',
 	totalFrames = 45, imgWidth = 200,
 	targetObj = document.querySelector('#gatoHolder'),
 	targetRender = document.querySelector('#gato'),
@@ -8,11 +8,16 @@ var initialTouch, previousTouch, origValue, recursive,
 	logo = document.querySelector('#gatoLogo'),
 	offsetTop = targetObj.getBoundingClientRect().top;
 
-if(typeof window.orientation !== 'undefined'){
-	console.log('was this called');
+var isMobile = false;
+if(true){
+// if(typeof window.orientation !== 'undefined'){
+	isMobile = true;
+	console.log('touchAndDragToExpand');
 	touchAndDragToExpand(targetObj); 
 }
 else {
+	console.log('clickAndDrag');
+
 	clickAndDrag(targetObj);
 }
 document.querySelector('#hell').innerHTML = typeof window.orientation;
@@ -41,20 +46,21 @@ function clickAndDrag(targetObj) {
 
 
 function touchAndDragToExpand(targetObj) {
-	targetObj.addEventListener(targetObj, 'touchstart', tryme);
-	targetObj.addEventListener(targetObj, 'touchmove', bannerIsDragged);
-	targetObj.addEventListener(targetObj, 'touchend', bannerContactEnd);
+	targetObj.addEventListener('touchstart', tryme);
+	targetObj.addEventListener('touchmove', bannerIsDragged);
+	targetObj.addEventListener('touchend', bannerContactEnd);
 }
 
 var v = 0;
 function tryme(event) {
-	console.log(v)
-	v++;
+	initalBannerContact(event);
 }
 
 function initalBannerContact(event){ 
 	// initialTouch = RPNS.device.mobile ? event.changedTouches[0][axis] : event[axis];
-	initialTouch = event[axis];
+	console.log(event.changedTouches[0]);
+	console.log(event.changedTouches[0][axis] );
+	initialTouch = isMobile ? event.changedTouches[0][axis] : event[axis];
 	previousTouch = initialTouch;
 
 	origValue = parseInt(targetRender.style.backgroundPositionX) || 0;
@@ -66,7 +72,7 @@ function initalBannerContact(event){
 
 function bannerIsDragged(event){ 
 	// var currentTouch = RPNS.device.mobile ? event.changedTouches[0][axis] : event[axis];
-	var currentTouch = event[axis];
+	var currentTouch = isMobile ? event.changedTouches[0][axis] : event[axis];
 	var displacement = -parseInt((currentTouch - initialTouch) * totalFrames/130); //denominator is scale in pixels
 
 	var newValue = Math.abs(origValue/imgWidth) + displacement;
